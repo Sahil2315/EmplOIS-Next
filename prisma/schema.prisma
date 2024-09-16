@@ -7,14 +7,12 @@ datasource db {
   url      = env("PG_CONNECT")
 }
 
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
 model change {
-  empid  String @db.Char(8)
-  field  String @db.VarChar(20)
-  value  String @db.VarChar(30)
-  chstat String @default("Held") @db.VarChar(15)
-
-  @@ignore
+  changeid Int    @id @default(autoincrement())
+  empid    String @db.Char(8)
+  field    String @db.VarChar(20)
+  value    String @db.VarChar(30)
+  chstat   String @default("Held") @db.VarChar(15)
 }
 
 model employee {
@@ -41,16 +39,14 @@ model employee {
   messages messages[]
 }
 
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
 model leaves {
+  reqid  Int      @id @default(autoincrement())
   empid  String   @db.Char(8)
   Reason String   @db.VarChar(80)
   from   DateTime @db.Date
   to     DateTime @db.Date
   lstat  String   @default("Held") @db.VarChar(15)
   team   Int?     @db.SmallInt
-
-  @@ignore
 }
 
 model logindet {
@@ -72,13 +68,11 @@ model messages {
   employee employee @relation(fields: [empid], references: [empid], onDelete: NoAction, onUpdate: NoAction)
 }
 
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
 model projects {
-  team           Int?     @db.SmallInt 
+  projectid      Int      @id @default(autoincrement())
+  team           Int?     @db.SmallInt
   status         String   @db.VarChar(20)
   statpercentage Int      @db.SmallInt
   deadline       DateTime @db.Date
   name           String   @db.VarChar(20)
-
-  @@ignore
 }
