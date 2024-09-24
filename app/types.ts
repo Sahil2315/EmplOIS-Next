@@ -1,0 +1,21 @@
+export type employeeTS = {
+    empid: string,
+    name: string,
+    dob: string,
+    email: string,
+    phone: string,
+    c_add: string,
+    p_add: string,
+    aadhaar: string,
+    upi: string,
+    dept: string,
+    title: string,
+    doj: string,
+    salary: number,
+    regport: string,
+    regkey: string,
+    laptop: string,
+    leaves: number,
+    gender: string,
+    team: number
+}

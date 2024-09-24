@@ -16,3 +16,18 @@
 .svg-bg-grad{
     background: radial-gradient(circle, rgba(69, 40, 150, 0.1) 0%, rgba(26, 12, 82, 0.004) 70%);
 }
+
+.login-bg-grad{
+    background: linear-gradient(90deg, rgba(0,212,255,0.04) 0%, rgba(9,9,121,0.05) 41%, rgba(2,0,36,0.05) 100%);
+}
+
+.dropShadowSVG{
+    filter: drop-shadow(2mm 3mm 4mm rgba(77, 23, 152, 0.1));
+}
+
+.text-shadow-4xl{
+    text-shadow: #ffffffaf 1px 1px 5px;
+}
+.text-shadow-2xl{
+    text-shadow: #ffffffaf 1px 1px 3px;
+}

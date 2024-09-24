@@ -1,10 +1,21 @@
 import { empLoginDB, Test } from "@/app/utils/database";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import jwt from "jsonwebtoken"
 
-export async function POST(Request: any) {
-  let dbRes = empLoginDB({ entry: "RahulT224", pword: "123RahulT" });
-  return NextResponse.json({
-    "success": true
-  })
+export async function POST(Request: NextRequest) {
+  let req = await Request.json()
+  let user = await empLoginDB({entry: req.uname, pword: req.pword})
+  if (user){
+    let userToken = jwt.sign(user, process.env.JWT_SECRET as string)
+    let headerToken = process.env.JWT_HEADER_PRE + userToken + process.env.JWT_HEADER_POST
+    return NextResponse.json({
+      'success': true,
+      'token': headerToken
+    })
+  }
+  else{
+    return NextResponse.json({
+      'success': false
+    })
+  }
 }

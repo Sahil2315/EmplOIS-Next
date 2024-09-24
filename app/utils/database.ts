@@ -12,24 +12,32 @@ export async function empLoginDB({
   entry: string;
   pword: string;
 }) {
-  let resp = await prisma.logindet.findUnique({
+  let resp = await prisma.logindet.findFirst({
     where: {
       AND: [
         {
-          OR: [
-            {
-              username: entry,
-            },
-            {
-              email: entry,
-            },
-          ],
+          username: entry
         },
         {
-          password: pword,
+          password: pword
         },
       ],
     },
+    select: {
+      empid: true,
+      username: true,
+      email: true,
+      admin: true
+    }
   });
-  console.log(resp);
+  return(resp);
+}
+
+export async function completeDetails(empid: string){
+  let resp = await prisma.employee.findUnique({
+    where: {
+      'empid': empid
+    }
+  })
+  return(resp)
 }

@@ -17,10 +17,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className + " bg-black z-0 relative"}>          
-        <div className="h-full w-full absolute z-0 bg-grad-1"></div>
-        <div className="h-full w-full absolute z-10 bg-grad-2"></div>
-        <div className="h-full w-full absolute z-20 bg-grad-3"></div>
-        <div className="h-full w-full relative z-30">
+        <div className="h-lvh w-lvw absolute z-0 bg-grad-1"></div>
+        <div className="h-lvh w-lvw absolute z-10 bg-grad-2"></div>
+        <div className="h-lvh w-lvw absolute z-20 bg-grad-3"></div>
+        <div className="h-lvh w-lvw relative z-30">
           {children}
         </div>
       </body>
